@@ -284,3 +284,33 @@ Processing by NeedsController#show as HTML
 Completed 200 OK in 25ms (Views: 3.9ms | ActiveRecord: 2.1ms | Allocations: 8398)
 
 
+Started GET "/pets" for ::1 at 2021-01-25 17:17:57 -0800
+Processing by PetsController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+No serializer found for resource: #<Pet id: 5, name: "Flopsie", owner: "Fiona", image_url: "https://static.wikia.nocookie.net/avatar/images/4/...", created_at: "2021-01-25 23:10:51.699721000 +0000", updated_at: "2021-01-25 23:10:51.699721000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Pet::ActiveRecord_Relation (0.69ms)
+Completed 200 OK in 27ms (Views: 20.6ms | ActiveRecord: 2.3ms | Allocations: 6100)
+
+
+Started GET "/pets" for ::1 at 2021-01-25 17:21:53 -0800
+  
+SyntaxError (/Users/noelani26/Project3/pets-backend/app/controllers/pets_controller.rb:3: syntax error, unexpected tLABEL
+        pets = Pet.all, only: [:name, :owner, :image_url]
+                        ^~~~~):
+  
+app/controllers/pets_controller.rb:3: syntax error, unexpected tLABEL
+app/controllers/pets_controller.rb:3: syntax error, unexpected tLABEL
+Started GET "/pets" for ::1 at 2021-01-25 17:22:25 -0800
+Processing by PetsController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+No serializer found for resource: #<Pet id: 5, name: "Flopsie", owner: "Fiona", image_url: "https://static.wikia.nocookie.net/avatar/images/4/...", created_at: "2021-01-25 23:10:51.699721000 +0000", updated_at: "2021-01-25 23:10:51.699721000 +0000">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Pet::ActiveRecord_Relation (0.34ms)
+Completed 200 OK in 31ms (Views: 12.6ms | ActiveRecord: 2.1ms | Allocations: 6063)
+
+
