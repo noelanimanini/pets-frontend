@@ -13,11 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_01_25_223019) do
 
   create_table "needs", force: :cascade do |t|
-    t.string "medication"
-    t.string "exercise"
-    t.string "diet"
-    t.boolean "completed"
     t.string "notes"
+    t.boolean "medication"
+    t.boolean "exercise"
+    t.boolean "diet"
     t.integer "pet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,6 +27,9 @@ ActiveRecord::Schema.define(version: 2021_01_25_223019) do
     t.string "name"
     t.string "owner"
     t.string "image_url"
+    t.string "medication"
+    t.string "exercise"
+    t.string "diet"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
