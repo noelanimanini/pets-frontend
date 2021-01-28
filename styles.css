@@ -1,10 +1,40 @@
+#nav-pets-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 
-/* .container { */
-    /* display: grid; */
-
-.pets-card {
-    display: grid;
-    img {
-        
-    }    
 }
+
+.render-single-pets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+
+}
+
+img {
+        width: 10%;
+        height: 10%;
+}
+
+div {
+
+    font-family: Arial, Helvetica, sans-serif;  
+    background-color: green;
+    opacity: 1;
+  }
+
+  
+  
+
+
+/* .container {
+    border: solid red 2px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+    height: 100%;
+    
+} */

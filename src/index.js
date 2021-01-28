@@ -23,15 +23,14 @@ let renderPetsNav = (pet) => {
 
 }
 // let showAllPets = (pets) => {
-
 // }
 
 
 // DOM card
 let renderSinglePet = (pet) => {
 
-    const petsCard = document.querySelector('.pets-card')
-    const container = document.querySelector('.container')
+    const renderCard = document.querySelector('.render-pets')
+    const renderSinglePet = document.querySelector('#render-single-pet')
 
     const img = document.createElement('img')
     const name = document.createElement('h3')
@@ -51,13 +50,14 @@ let renderSinglePet = (pet) => {
     // container.innerHTML = ""
 
 
-    container.append(img, name, owner, medication, exercise, diet)
-    petsCard.appendChild(container)
+    renderSinglePet.append(img, name, owner, medication, exercise, diet)
+    renderCard.appendChild(renderSinglePet)
 }
 
 
 // click on the nav bar and show each pet for each pet that is clicked
 let clickDogs = (pet) => {
+    
     const petsCard = document.querySelector('.pets-card')
     const container = document.querySelector('.container')
     // const imageContainer = document.createElement('img')
@@ -88,8 +88,6 @@ let clickDogs = (pet) => {
 
 let petForm = (pet) => {
      // trying to make the form 
-     const div = document.createElement('div')
-     
      const asideContainer = document.querySelector('.aside-form')
      const form = document.createElement('form')
      const label = document.createElement('label')
@@ -119,7 +117,6 @@ let petForm = (pet) => {
      input4.setAttribute('type', 'text')
      input4.setAttribute('id', 'notes')
      input4.setAttribute('name', 'notes')
-     input4.setAttribute('value', 'What do you want to write down today?')
 
      
      input.setAttribute('type', 'checkbox')
@@ -136,6 +133,7 @@ let petForm = (pet) => {
      label2.setAttribute('for', 'comments2')
      
      label2.textContent =  `Has ${pet.name} received ${pet.medication}?`
+
     // end of second checkbox
     // third checkbox
      input3.setAttribute('type', 'checkbox')
@@ -173,10 +171,74 @@ const newFunction = (e, pet) => {
           })
       })
       .then(res => res.json())
-      .then(object => console.log(object))
+      .then(need => showPetInfo(need))
+      .catch(error => console.log(error.message))
+}
+
+let showPetInfo = (needs) => {
+   const deleteNeeds = document.querySelector('.delete-needs')
+   const div = document.createElement('div')
+   const li = document.createElement('li')
+   const li2 = document.createElement('li')
+   const li3 = document.createElement('li')
+   const title = document.createElement('h3')
+   const btn1 = document.createElement('button')
+   btn1.innerText = 'delete'
+   btn1.setAttribute('need-id', needs.id)
+   title.innerText = 'Pet Daily Update'
+
+   
+   if (needs.medication === true) {
+        li.innerText = 'your pet has recevied their medication'
+    } else {
+        li.innerText = 'your pet has not recevied their medication'
+    }
+
+    if (needs.exercise === true) {
+        li2.innerText = 'your pet has recevied their exercise for the day!'
+    } else {
+        li2.innerText = 'your pet has not recevied their exercise'
+    }
+
+    if (needs.diet === true) {
+        li3.innerText = 'your pet has been fed!'
+    } else {
+        li3.innerText = 'your pet has not been fed'
+    }
+
+
+    // updateNeeds.innerHTML = ""
+    div.append(title, li, li2, li3, btn1)
+   
+   deleteNeeds.append(div)
+   btn1.addEventListener('click', (e) => deletePetNeeds(e, needs))
+   
+}
+
+const deletePetNeeds = (e, needs) => {
+
+    console.log(needs)
+    fetch(`http://localhost:3000/needs/${needs.id}`,{
+        method:'DELETE'
+      })
+      .then(res => res.json())
+      .then(() => {
+        const update = document.querySelector('.delete-needs div')
+        update.remove();
+        console.log(update.remove())
+      })
       .catch(error => console.log(error.message))
 
 }
+
+
+
+
+
+
+// id - patch, delete, getone, 
+
+// dont- get all and post
     
  
 
