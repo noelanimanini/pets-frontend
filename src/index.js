@@ -15,10 +15,13 @@ getPets();
 
 // DOM - GET for each individual pet, not the :id
 let renderPetsNav = (pet) => {
-    const navBar = document.querySelector('#nav-pets-bar')
+    const navBar = document.querySelector('nav')
     const span = document.createElement('span')
-    span.innerText = pet.name
-    navBar.appendChild(span)
+    const head = document.createElement('h2')
+    head.className = "h2"
+    head.textContent = pet.name
+    span.appendChild(head)
+    navBar.append(span)
     span.addEventListener('click', () => clickDogs(pet))
 
 }
@@ -27,23 +30,25 @@ let renderPetsNav = (pet) => {
 // DOM card
 let renderSinglePet = (pet) => {
 
-    const renderCard = document.querySelector('.render-pets')
+    const petsContainer = document.querySelector('.render-pets')
     const renderSinglePet = document.createElement('div')
-    renderSinglePet.setAttribute("id", "pet-name")
+    renderSinglePet.setAttribute("class", "pet-name")
+    renderSinglePet.id = pet.id
     const img = document.createElement('img')
     const name = document.createElement('h3')
     const owner = document.createElement('p')
     const medication = document.createElement('p')
     const exercise = document.createElement('p')
     const diet = document.createElement('p')
+    const secondDiv = document.createElement('div')
 
+    
     const div = document.createElement('div')
-    const div2 = document.createElement('div')
-    const button = document.createElement('buton')
+    const button = document.createElement('button')
     button.setAttribute('id', 'edit')
-
-    div2.id = pet.id
+    
     button.textContent = `${pet.name}'s needs`
+    button.addEventListener("click",  () => editPets(pet))
     
     div.append(button)
 
@@ -54,16 +59,16 @@ let renderSinglePet = (pet) => {
     medication.innerText = `Medication: ${pet.medication}`
     exercise.innerText = `Exercise: ${pet.exercise}`
     diet.innerText = `Diet: ${pet.diet}`
-    // container.innerHTML = ""
+    // renderCard.innerHTML = ""
 
-
-    renderSinglePet.append(img, name, owner, medication, exercise, diet, div)
-    renderCard.appendChild(renderSinglePet)
-    button.addEventListener("click",  () => editPets(pet))
+    secondDiv.append(name, owner, medication, exercise, diet, div)
+    renderSinglePet.append(img, secondDiv)
+    petsContainer.appendChild(renderSinglePet)
+    
 }
 
 const editPets = (pet) => {
-    const singlePet = document.querySelector('#pet-name')
+    const singlePet = document.getElementById(pet.id)
     const form = document.createElement('form')
     const input = document.createElement('input')
     const input2 = document.createElement('input')

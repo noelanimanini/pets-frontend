@@ -1,52 +1,82 @@
-/* #nav-pets-bar {
-    text-align: center;
-    
-}
 
-
-
-.pets-card {
-    display: flex;
-}
-
-.aside-form {
-    display: flex;
-}
-
-.container {
-    display: flex;
-}
-
-.update {
-    display: flex;
+/* @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,300);
+* {
+	margin: 0;
+	padding: 0;
 } */
-#nav-pets-bar {
-    height: 15vh;
-    background: skyblue;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+body {
+    margin: 0;
 }
 
-#nav-pets-bar span {
-    height: 80%;
-    width: 8vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 2em;
+nav {
+	height: 30vh;
+	background: linear-gradient(45deg, rgba(255,175,189,.7), rgba(100,216,243,.7), rgba(234,236,198,.7), rgba(245,146,176,.7), rgba(52,219,216,.7)) 0 0 / 1000% no-repeat, url(https://images.unsplash.com/photo-1501854140801-50d01698950b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1440&q=80) 0 0 / cover no-repeat;
+	-webkit-animation: gradientAnimation 40s ease infinite;
+    animation: gradientAnimation 40s ease infinite;
+    display: flex; 
+    justify-content: space-between;
 }
 
-#pet-name {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    
+.h2 {
+    float: left;
+    padding: 25px;
+    text-align: justify;
+    font: 50 50px/1.5 'Pacifico', Helvetica, sans-serif;
+    color: white;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.1), 7px 7px 0px rgba(0,0,0,0.05);
+  }
 
+
+@-webkit-keyframes gradientAnimation {
+	0%   { background-position: 0% 30%, 0 0;}
+	50%  { background-position: 100% 70%, 0 0;}
+	100% { background-position: 0% 30%, 0 0;}
+}
+@keyframes gradientAnimation {
+	0%   { background-position: 0% 30%, 0 0;}
+	50%  { background-position: 100% 70%, 0 0;}
+	100% { background-position: 0% 30%, 0 0;}
 }
 
-#pet-name img {
+
+
+.render-pets{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 20px;
+    grid-gap: 20px;
+    max-width: 500px; 
+    scroll-behavior: smooth;
+}
+
+.pet-name {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    border: 1px solid grey;
+    border-radius: 10px;
+    grid-gap: 20px;
+    max-width: 500px; 
+}
+
+.pet-name img {
     max-width: 75vw;
     max-height: 25vw;
+    object-fit: scale-down;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    max-height: 300px;
+    max-width: 500px;
 
 }
+
+.pets-card {
+    padding: 45px;
+}
+
+.pets-card img {
+    padding: 45px;
+    max-height: 300px;
+    max-width: 500px;
+
+}
+
