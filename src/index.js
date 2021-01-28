@@ -15,23 +15,21 @@ getPets();
 
 // DOM - GET for each individual pet, not the :id
 let renderPetsNav = (pet) => {
-    const span = document.createElement('span')
     const navBar = document.querySelector('#nav-pets-bar')
+    const span = document.createElement('span')
     span.innerText = pet.name
     navBar.appendChild(span)
     span.addEventListener('click', () => clickDogs(pet))
 
 }
-// let showAllPets = (pets) => {
-// }
 
 
 // DOM card
 let renderSinglePet = (pet) => {
 
     const renderCard = document.querySelector('.render-pets')
-    const renderSinglePet = document.querySelector('#render-single-pet')
-
+    const renderSinglePet = document.createElement('div')
+    renderSinglePet.setAttribute("id", "pet-name")
     const img = document.createElement('img')
     const name = document.createElement('h3')
     const owner = document.createElement('p')
@@ -39,7 +37,16 @@ let renderSinglePet = (pet) => {
     const exercise = document.createElement('p')
     const diet = document.createElement('p')
 
+    const div = document.createElement('div')
+    const div2 = document.createElement('div')
+    const button = document.createElement('buton')
+    button.setAttribute('id', 'edit')
+
+    div2.id = pet.id
+    button.textContent = `${pet.name}'s needs`
     
+    div.append(button)
+
 
     img.src = pet.image_url
     name.innerText = `Name: ${pet.name}`
@@ -50,8 +57,70 @@ let renderSinglePet = (pet) => {
     // container.innerHTML = ""
 
 
-    renderSinglePet.append(img, name, owner, medication, exercise, diet)
+    renderSinglePet.append(img, name, owner, medication, exercise, diet, div)
     renderCard.appendChild(renderSinglePet)
+    button.addEventListener("click",  () => editPets(pet))
+}
+
+const editPets = (pet) => {
+    const singlePet = document.querySelector('#pet-name')
+    const form = document.createElement('form')
+    const input = document.createElement('input')
+    const input2 = document.createElement('input')
+    const input3 = document.createElement('input')
+    const input4 = document.createElement('input')
+    const label = document.createElement('label')
+    const label2 = document.createElement('label')
+    const label3 = document.createElement('label')
+
+    input4.setAttribute('type', 'submit') 
+    input4.setAttribute('value', 'submit') 
+    
+    singlePet.setAttribute('method', 'patch')
+    singlePet.setAttribute('action', 'submit')
+    singlePet.setAttribute('name', 'petform')
+
+    input.setAttribute('type', 'textarea')
+    input.setAttribute('id', 'medication')
+    input.setAttribute('name', 'medication')
+    label.innerText = `${pet.name}'s medication:`
+    
+
+    input2.setAttribute('type', 'textarea')
+    input2.setAttribute('id', 'exercise')
+    input2.setAttribute('name', 'exercise')
+    label2.innerText = `${pet.name}'s exercise:`
+
+    input3.setAttribute('type', 'textarea')
+    input3.setAttribute('id', 'diet')
+    input3.setAttribute('name', 'diet')
+    label3.innerText = `${pet.name}'s diet:`
+    
+    // singlePet.innerHTML = ""
+    form.append(label, input, label2, input2, label3, input3, input4)
+    singlePet.appendChild(form)
+    form.addEventListener('submit', (e) => postForm(e, pet))
+
+}
+
+const postForm = (e, pet) => {
+    console.log(e)
+    e.preventDefault()
+    fetch(`http://localhost:3000/pets/${pet.id}`,{
+        method:'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+              medication: e.target.medication.value,
+              exercise: e.target.exercise.value,
+              diet: e.target.diet.value,
+          })
+      })
+      .then(res => res.json())
+      .then(pet => renderSinglePet(pet))
+      .catch(error => console.log(error.message))
 }
 
 
@@ -88,6 +157,7 @@ let clickDogs = (pet) => {
 
 let petForm = (pet) => {
      // trying to make the form 
+     const petCard = document.querySelector('.pets-card')
      const asideContainer = document.querySelector('.aside-form')
      const form = document.createElement('form')
      const label = document.createElement('label')
@@ -114,7 +184,7 @@ let petForm = (pet) => {
      form.setAttribute('name', 'petform')
      
     //  notes 
-     input4.setAttribute('type', 'text')
+     input4.setAttribute('type', 'textArea')
      input4.setAttribute('id', 'notes')
      input4.setAttribute('name', 'notes')
 
@@ -149,6 +219,7 @@ let petForm = (pet) => {
      form.append(input, label, br, input2, label2, br2, input3, label3, br3, input4, input5)
  
      asideContainer.appendChild(form)
+     petCard.appendChild(asideContainer)
      form.addEventListener('submit', (e) => newFunction(e, pet))
      // end of form 
 }
@@ -183,9 +254,11 @@ let showPetInfo = (needs) => {
    const li3 = document.createElement('li')
    const title = document.createElement('h3')
    const btn1 = document.createElement('button')
+   const li4 = document.createElement('li')
    btn1.innerText = 'delete'
    btn1.setAttribute('need-id', needs.id)
    title.innerText = 'Pet Daily Update'
+   li4.textContent = needs.notes
 
    
    if (needs.medication === true) {
@@ -208,7 +281,7 @@ let showPetInfo = (needs) => {
 
 
     // updateNeeds.innerHTML = ""
-    div.append(title, li, li2, li3, btn1)
+    div.append(title, li, li2, li3, li4, btn1)
    
    deleteNeeds.append(div)
    btn1.addEventListener('click', (e) => deletePetNeeds(e, needs))
