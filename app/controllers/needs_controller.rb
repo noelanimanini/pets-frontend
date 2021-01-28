@@ -10,7 +10,6 @@ class NeedsController < ApplicationController
     end 
 
     def create
-     
         need = Need.create(notes: params[:notes], medication: params[:medication], exercise: params[:exercise], diet: params[:diet], pet_id: params[:pet_id])
         render json: need
     end 
@@ -18,6 +17,7 @@ class NeedsController < ApplicationController
     def destroy
         need = Need.find(params[:id]).destroy
         render json: {message: 'This need has been deleted'}
+    
     end 
 
 end
