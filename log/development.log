@@ -11613,3 +11613,1344 @@ Processing by NeedsController#destroy as */*
 Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 1919)
 
 
+Started GET "/pets" for ::1 at 2021-01-28 01:29:05 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 12ms (Views: 10.4ms | ActiveRecord: 1.9ms | Allocations: 2070)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 01:32:44 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 01:33:21 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>9, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>9}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.5ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 1], ["pet_id", 9], ["created_at", "2021-01-28 09:33:21.265876"], ["updated_at", "2021-01-28 09:33:21.265876"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 4.3ms | Allocations: 2599)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 01:33:25 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"zxcv", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>9, "need"=>{"notes"=>"zxcv", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>9}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.4ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "zxcv"], ["medication", 1], ["exercise", 1], ["diet", 1], ["pet_id", 9], ["created_at", "2021-01-28 09:33:25.803434"], ["updated_at", "2021-01-28 09:33:25.803434"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 8ms (Views: 0.4ms | ActiveRecord: 2.1ms | Allocations: 2576)
+
+
+Started DELETE "/needs/17" for ::1 at 2021-01-28 01:33:28 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.4ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 1814)
+
+
+Started DELETE "/needs/17" for ::1 at 2021-01-28 01:33:29 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 490)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Need with 'id'=17):
+  
+app/controllers/needs_controller.rb:18:in `destroy'
+Started GET "/pets" for ::1 at 2021-01-28 09:13:33 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 1.2ms | Allocations: 2068)
+
+
+Started PATCH "/pets/9" for ::1 at 2021-01-28 09:13:50 -0800
+Processing by PetsController#update as JSON
+  Parameters: {"medication"=>"meds ", "exercise"=>"exercise ", "diet"=>"food", "id"=>"9", "pet"=>{"medication"=>"meds ", "exercise"=>"exercise ", "diet"=>"food"}}
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/pets_controller.rb:8:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mPet Update (0.5ms)[0m  [1m[33mUPDATE "pets" SET "exercise" = ?, "diet" = ?, "updated_at" = ? WHERE "pets"."id" = ?[0m  [["exercise", "exercise "], ["diet", "food"], ["updated_at", "2021-01-28 17:13:50.214368"], ["id", 9]]
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 2356)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 09:15:03 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (1.0ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 10], ["created_at", "2021-01-28 17:15:03.533228"], ["updated_at", "2021-01-28 17:15:03.533228"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 2576)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 09:15:03 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10}}
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.6ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 10], ["created_at", "2021-01-28 17:15:03.949015"], ["updated_at", "2021-01-28 17:15:03.949015"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 3.5ms | Allocations: 2576)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 09:15:04 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.7ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 10], ["created_at", "2021-01-28 17:15:04.107890"], ["updated_at", "2021-01-28 17:15:04.107890"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 12ms (Views: 0.3ms | ActiveRecord: 2.7ms | Allocations: 2576)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 09:15:04 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>false, "pet_id"=>10}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.7ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 10], ["created_at", "2021-01-28 17:15:04.251100"], ["updated_at", "2021-01-28 17:15:04.251100"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 3.0ms | Allocations: 2576)
+
+
+Started DELETE "/needs/18" for ::1 at 2021-01-28 09:15:06 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"18"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.7ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 18]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 2.6ms | Allocations: 1814)
+
+
+Started DELETE "/needs/19" for ::1 at 2021-01-28 09:15:06 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"19"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.5ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 19]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 1793)
+
+
+Started DELETE "/needs/20" for ::1 at 2021-01-28 09:15:07 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"20"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.4ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 20]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.7ms | Allocations: 1793)
+
+
+Started DELETE "/needs/21" for ::1 at 2021-01-28 09:15:08 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"21"}
+  [1m[36mNeed Load (0.2ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 21], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.5ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 21]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 2.2ms | Allocations: 1793)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:18:21 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1485)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:18:50 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:19:55 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:22:55 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:23:21 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:23:22 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:23:58 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:25:45 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:27:39 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:28:12 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:28:13 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:28:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.8ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:29:57 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:30:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:30:24 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:30:46 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:31:17 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:31:32 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:32:30 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:34:09 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:38:04 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:38:19 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 5.6ms | ActiveRecord: 0.6ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:41:22 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:43:26 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:44:29 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started POST "/needs" for ::1 at 2021-01-28 09:44:44 -0800
+Processing by NeedsController#create as JSON
+  Parameters: {"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>11, "need"=>{"notes"=>"", "medication"=>true, "exercise"=>true, "diet"=>true, "pet_id"=>11}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mNeed Create (0.6ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", ""], ["medication", 1], ["exercise", 1], ["diet", 1], ["pet_id", 11], ["created_at", "2021-01-28 17:44:44.582020"], ["updated_at", "2021-01-28 17:44:44.582020"]]
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:13:in `create'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 3.0ms | Allocations: 2576)
+
+
+Started DELETE "/needs/22" for ::1 at 2021-01-28 09:44:46 -0800
+Processing by NeedsController#destroy as */*
+  Parameters: {"id"=>"22"}
+  [1m[36mNeed Load (0.3ms)[0m  [1m[34mSELECT "needs".* FROM "needs" WHERE "needs"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mNeed Destroy (0.5ms)[0m  [1m[31mDELETE FROM "needs" WHERE "needs"."id" = ?[0m  [["id", 22]]
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/needs_controller.rb:18:in `destroy'
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.4ms | Allocations: 1793)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:46:57 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 09:55:25 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 11.1ms | ActiveRecord: 1.3ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:00:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:01:29 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started PATCH "/pets/9" for ::1 at 2021-01-28 10:04:26 -0800
+Processing by PetsController#update as JSON
+  Parameters: {"medication"=>"asd", "exercise"=>"asd", "diet"=>"waffles", "id"=>"9", "pet"=>{"medication"=>"asd", "exercise"=>"asd", "diet"=>"waffles"}}
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/pets_controller.rb:8:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mPet Update (0.4ms)[0m  [1m[33mUPDATE "pets" SET "medication" = ?, "exercise" = ?, "diet" = ?, "updated_at" = ? WHERE "pets"."id" = ?[0m  [["medication", "asd"], ["exercise", "asd"], ["diet", "waffles"], ["updated_at", "2021-01-28 18:04:26.406514"], ["id", 9]]
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 3.3ms | Allocations: 2366)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:22:25 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.8ms | Allocations: 2070)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:23:10 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:23:25 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:23:50 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:24:04 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:30:28 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.9ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:30:38 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:31:27 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:33:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:33:49 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:33:56 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:35:29 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 33ms (Views: 26.2ms | ActiveRecord: 0.7ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:38:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:38:53 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:41:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.6ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:41:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:43:32 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:43:34 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:47:27 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:47:45 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:48:00 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:49:24 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:53:02 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:53:21 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:53:45 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:56:21 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:56:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:56:41 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:58:27 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 10:59:27 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:00:19 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:00:43 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:01:49 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:02:47 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1485)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:03:36 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.5ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:03:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:04:05 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:04:07 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:04:26 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:04:27 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:05:07 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:05:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:05:26 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.5ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:05:54 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:06:05 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:06:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:06:26 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:07:11 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:07:26 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:07:56 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:08:13 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:09:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:11:46 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.6ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:13:08 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.6ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:13:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 5.4ms | ActiveRecord: 0.5ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:13:45 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:15:59 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:25:03 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.6ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 1.8ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:25:10 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:25:12 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:50:56 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (1.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 30ms (Views: 22.8ms | ActiveRecord: 2.5ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:51:57 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:52:37 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:54:11 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:55:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:55:51 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:56:39 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:57:08 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.7ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:57:18 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 1485)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 11:58:07 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:00:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.5ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:01:38 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:02:17 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:02:45 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:04:31 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:05:24 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 8.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:06:35 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:07:49 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:08:13 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:09:05 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:09:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:10:06 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.8ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.8ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:10:13 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:10:19 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.5ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 12:10:54 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:08:54 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.7ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 1.9ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:09:48 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:11:50 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:12:32 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:12:50 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:14:00 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:14:08 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:14:30 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:14:51 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:15:04 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:15:15 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:15:40 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:16:10 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:17:00 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:17:22 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:17:33 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:17:53 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 80ms (Views: 79.1ms | ActiveRecord: 0.2ms | Allocations: 1485)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:18:14 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:18:41 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:19:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started PATCH "/pets/10" for ::1 at 2021-01-28 13:19:33 -0800
+Processing by PetsController#update as JSON
+  Parameters: {"medication"=>"ZXc", "exercise"=>"ZXc", "diet"=>"ZXc", "id"=>"10", "pet"=>{"medication"=>"ZXc", "exercise"=>"ZXc", "diet"=>"ZXc"}}
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/pets_controller.rb:8:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mPet Update (0.8ms)[0m  [1m[33mUPDATE "pets" SET "medication" = ?, "exercise" = ?, "diet" = ?, "updated_at" = ? WHERE "pets"."id" = ?[0m  [["medication", "ZXc"], ["exercise", "ZXc"], ["diet", "ZXc"], ["updated_at", "2021-01-28 21:19:33.146509"], ["id", 10]]
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+Completed 200 OK in 15ms (Views: 0.7ms | ActiveRecord: 5.5ms | Allocations: 2366)
+
+
+Started PATCH "/pets/9" for ::1 at 2021-01-28 13:19:45 -0800
+Processing by PetsController#update as JSON
+  Parameters: {"medication"=>"ZXc", "exercise"=>"ZXc", "diet"=>"ZXc", "id"=>"9", "pet"=>{"medication"=>"ZXc", "exercise"=>"ZXc", "diet"=>"ZXc"}}
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/pets_controller.rb:8:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mPet Update (1.1ms)[0m  [1m[33mUPDATE "pets" SET "medication" = ?, "exercise" = ?, "diet" = ?, "updated_at" = ? WHERE "pets"."id" = ?[0m  [["medication", "ZXc"], ["exercise", "ZXc"], ["diet", "ZXc"], ["updated_at", "2021-01-28 21:19:45.295471"], ["id", 9]]
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pets_controller.rb:9:in `update'
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 2.7ms | Allocations: 2343)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:19:57 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:21:01 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:21:36 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:23:33 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:25:23 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:25:47 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:29:30 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:29:49 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:30:18 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:30:35 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:31:04 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:31:20 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.2ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:31:43 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.3ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 13:32:06 -0800
+Processing by PetsController#index as */*
+  [1m[36mPet Load (0.4ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms | Allocations: 1484)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 14:48:27 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 1.5ms | Allocations: 2069)
+
+
+Started GET "/pets" for ::1 at 2021-01-28 15:11:24 -0800
+Processing by PetsController#index as */*
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+  [1m[36mPet Load (1.3ms)[0m  [1m[34mSELECT "pets".* FROM "pets"[0m
+  ↳ app/controllers/pets_controller.rb:4:in `index'
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 2.2ms | Allocations: 2069)
+
+
