@@ -565,3 +565,104 @@ FOREIGN KEY ("pet_id")
   [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mPet Load (0.5ms)[0m  [1m[34mSELECT "pets".* FROM "pets" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
   [1m[36mNeed Load (0.3ms)[0m  [1m[34mSELECT "needs".* FROM "needs" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreatePets (20210125222340)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "pets" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "owner" varchar, "image_url" varchar, "medication" varchar, "exercise" varchar, "diet" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210125222340"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateNeeds (20210125223019)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "needs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "notes" varchar, "medication" boolean, "exercise" boolean, "diet" boolean, "pet_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_9f8691acbd"
+FOREIGN KEY ("pet_id")
+  REFERENCES "pets" ("id")
+)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_needs_on_pet_id" ON "needs" ("pet_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210125223019"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-29 07:29:00.095648"], ["updated_at", "2021-01-29 07:29:00.095648"]]
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mNeed Destroy (0.1ms)[0m  [1m[31mDELETE FROM "needs"[0m
+  [1m[36mPet Destroy (0.3ms)[0m  [1m[31mDELETE FROM "pets"[0m
+  [1m[36mNeed Destroy (0.2ms)[0m  [1m[31mDELETE FROM "needs"[0m
+  [1m[36mPet Destroy (0.1ms)[0m  [1m[31mDELETE FROM "pets"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.6ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Flopsie"], ["owner", "Lindsay"], ["image_url", "https://i.guim.co.uk/img/media/d0c0847156e2d465c40c775339aa531489391967/0_153_2369_1422/master/2369.jpg?width=700&quality=85&auto=format&fit=max&s=53f3273a4770a5ce5159aa2fc9c6d340"], ["medication", "eye drops"], ["exercise", "3 mile sprint"], ["diet", "Science Hill Diet"], ["created_at", "2021-01-29 07:29:06.549380"], ["updated_at", "2021-01-29 07:29:06.549380"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.6ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Donkey"], ["owner", "Ix"], ["image_url", "https://www.omlet.us/images/originals/guinea_pig_breeds_crested_hand_tamed.jpg"], ["medication", "ear drops"], ["exercise", "tri-cycle 500 meters"], ["diet", "Waffles"], ["created_at", "2021-01-29 07:29:06.557727"], ["updated_at", "2021-01-29 07:29:06.557727"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.9ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Kevin"], ["owner", "Charlie"], ["image_url", "https://www.pets4homes.co.uk/images/articles/2272/large/applehead-siamese-cats-what-are-they-5460e4201da70.jpg"], ["medication", "skin shots 3 times a day"], ["exercise", "rock climbing"], ["diet", "apples"], ["created_at", "2021-01-29 07:29:06.562126"], ["updated_at", "2021-01-29 07:29:06.562126"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.5ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Naruto"], ["owner", "Betsy"], ["image_url", "https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/article_thumbnails/other/dog_cool_summer_slideshow/1800x1200_dog_cool_summer_other.jpg?resize=750px:*"], ["medication", "paw ointment"], ["exercise", "soccer for 15 minutes"], ["diet", "Children"], ["created_at", "2021-01-29 07:29:06.568680"], ["updated_at", "2021-01-29 07:29:06.568680"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.3ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Zipcode"], ["owner", "Fiona"], ["image_url", "https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/12/cat-parody-instagram-removal.jpg?itok=f0n-uJsr&timestamp=1543773902"], ["medication", "eye drops"], ["exercise", "walk twice a day"], ["diet", "Science Hill Diet"], ["created_at", "2021-01-29 07:29:06.573999"], ["updated_at", "2021-01-29 07:29:06.573999"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.5ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Hammy"], ["owner", "Shrek"], ["image_url", "https://en.meming.world/images/en/5/5f/Scared_Hamster.jpg"], ["medication", "vitamins"], ["exercise", "screaming"], ["diet", "peas"], ["created_at", "2021-01-29 07:29:06.580623"], ["updated_at", "2021-01-29 07:29:06.580623"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.4ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Toto"], ["owner", "Cindy"], ["image_url", "https://www.petlandflorida.com/wp-content/uploads/2019/09/Petland_Florida_Cairn_Terrier.jpg"], ["medication", "N/A"], ["exercise", "runs twice a day"], ["diet", "Science Hill Diet"], ["created_at", "2021-01-29 07:29:06.585331"], ["updated_at", "2021-01-29 07:29:06.585331"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.5ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Melon"], ["owner", "Tommy"], ["image_url", "https://4a5fjy1q6t1ejxr0z4cpek9d-wpengine.netdna-ssl.com/wp-content/uploads/2020/07/Ways-To-Keep-Your-Parrot-Happy-And-Healthy-768x550.jpg"], ["medication", "carrot slices"], ["exercise", "let outside of cage and attach to treadmill"], ["diet", "apples"], ["created_at", "2021-01-29 07:29:06.593396"], ["updated_at", "2021-01-29 07:29:06.593396"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.4ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Bulby"], ["owner", "George"], ["image_url", "https://previews.123rf.com/images/sytnik/sytnik1702/sytnik170200024/71561444-close-up-big-aquarium-fish-the-flower-horn.jpg"], ["medication", "water vitamins"], ["exercise", "rock climbing"], ["diet", "flakes"], ["created_at", "2021-01-29 07:29:06.601401"], ["updated_at", "2021-01-29 07:29:06.601401"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Create (0.6ms)[0m  [1m[32mINSERT INTO "pets" ("name", "owner", "image_url", "medication", "exercise", "diet", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Scorpio"], ["owner", "Katie"], ["image_url", "https://i.kym-cdn.com/photos/images/original/001/503/136/0c9.jpeg"], ["medication", "scale oil"], ["exercise", "soccer for 23.45 minutes"], ["diet", "tears of a student"], ["created_at", "2021-01-29 07:29:06.607781"], ["updated_at", "2021-01-29 07:29:06.607781"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.4ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Flopsie was very nice to the other animals"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 1], ["created_at", "2021-01-29 07:29:06.635245"], ["updated_at", "2021-01-29 07:29:06.635245"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.1ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.3ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Donkey is having fun in the pool!"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 2], ["created_at", "2021-01-29 07:29:06.641634"], ["updated_at", "2021-01-29 07:29:06.641634"]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.6ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Kevin was awesome today!"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 3], ["created_at", "2021-01-29 07:29:06.649200"], ["updated_at", "2021-01-29 07:29:06.649200"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.1ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.4ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Naruto was fun to play with today"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 4], ["created_at", "2021-01-29 07:29:06.655525"], ["updated_at", "2021-01-29 07:29:06.655525"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.4ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "I have no idea where zipcode was looking"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 5], ["created_at", "2021-01-29 07:29:06.663204"], ["updated_at", "2021-01-29 07:29:06.663204"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.7ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Hammy seemed really scared and I did my best to work with him."], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 6], ["created_at", "2021-01-29 07:29:06.669732"], ["updated_at", "2021-01-29 07:29:06.669732"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.1ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.4ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Toto ran away from me, but I found them"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 7], ["created_at", "2021-01-29 07:29:06.677813"], ["updated_at", "2021-01-29 07:29:06.677813"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.1ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.7ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Melon really liked the treadmill"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 8], ["created_at", "2021-01-29 07:29:06.683377"], ["updated_at", "2021-01-29 07:29:06.683377"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.5ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "Bulby was adequate"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 9], ["created_at", "2021-01-29 07:29:06.691858"], ["updated_at", "2021-01-29 07:29:06.691858"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPet Load (0.2ms)[0m  [1m[34mSELECT "pets".* FROM "pets" WHERE "pets"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mNeed Create (0.5ms)[0m  [1m[32mINSERT INTO "needs" ("notes", "medication", "exercise", "diet", "pet_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["notes", "typical scoprio, always tolerable"], ["medication", 1], ["exercise", 1], ["diet", 0], ["pet_id", 10], ["created_at", "2021-01-29 07:29:06.698757"], ["updated_at", "2021-01-29 07:29:06.698757"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[36mcommit transaction[0m

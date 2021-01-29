@@ -10,6 +10,11 @@ class PetsController < ApplicationController
         render json: pet
     end 
 
+    def destroy
+        pet = Pet.find(params[:id]).destroy
+        render json: {message: 'This need has been deleted'}
+    end 
+
     private
 
     def pet_params
